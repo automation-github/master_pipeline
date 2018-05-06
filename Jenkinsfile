@@ -45,7 +45,7 @@ pipeline {
 
     stage('copy xmls') {
       steps {
-        sh '''cp -p ${workspace_179_12}/*.xml .'''
+        sh '''cp -p ${bla}/*.xml .'''
       }
     }
 
