@@ -9,7 +9,7 @@ pipeline {
       steps {
         script {
           bla = "$env.WORKSPACE/build"
-          echo $bla
+          echo bla
         }
         build (job: 'start/master', propagate: false)
       }
@@ -45,7 +45,7 @@ pipeline {
 
     stage('copy xmls') {
       steps {
-        sh '''cp -p $bla/*.xml .'''
+        sh '''cp -p ${bla}/*.xml .'''
       }
     }
 
