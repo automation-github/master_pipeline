@@ -1,3 +1,5 @@
+def bla = null
+
 pipeline {
   agent any
 
@@ -5,6 +7,10 @@ pipeline {
     stage('start') {
       agent any
       steps {
+        script {
+          bla = "$env.WORKSPACE/build"
+          echo $bla
+        }
         build (job: 'start/master', propagate: false)
       }
     }
@@ -34,6 +40,12 @@ pipeline {
       agent any
       steps {
         build (job: 'finish/master', propagate: false)
+      }
+    }
+
+    stage('copy xmls') {
+      steps {
+        sh '''cp -p ${workspace_179_12}/*.xml .'''
       }
     }
 
