@@ -8,7 +8,7 @@ pipeline {
       agent any
       steps {
         script {
-          bla = "$env.BRANCH_NAME/build"
+          bla = "$env.WORKSPACE/build"
           echo bla
         }
         build (job: 'start/master', propagate: false)
