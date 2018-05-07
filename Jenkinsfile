@@ -1,5 +1,3 @@
-def bla = null
-
 pipeline {
   agent any
 
@@ -7,17 +5,14 @@ pipeline {
     stage('start') {
       agent any
       steps {
-        script {
-          bla = "$env.WORKSPACE/build"
-          echo bla
-        }
         build (job: 'start/master', propagate: false)
       }
     }
 
-    stage('copy xmls') {
+    stage('finish') {
+      agent any
       steps {
-        sh "cp -p $bla/*.xml ."
+        build (job: 'finish/master', propagate: false)
       }
     }
 
