@@ -39,6 +39,6 @@ def BuildJob(projectName) {
 }
 
 node {
-    BuildJob('start')
-    BuildJob('finish')
+    BuildJob('start/master')
+    BuildJob('finish/master')
 }
